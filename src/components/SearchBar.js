@@ -9,11 +9,11 @@ export default class SearchBar extends Component {
     event.preventDefault();
 
     // TODO: make sure we call callback from parent component
+    this.props.onFormSubmit(this.state.term);
   };
 
   onInputChange = event => {
     this.setState({ term: event.target.value });
-    console.log(this.state.term);
   };
 
   render() {
