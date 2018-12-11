@@ -2,6 +2,14 @@
   display: flex !important;
   align-items: center !important;
   cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.video-item:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .video-item.item img {
