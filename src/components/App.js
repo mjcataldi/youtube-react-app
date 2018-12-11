@@ -8,14 +8,18 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null
     };
   }
+
+  onVideoSelect = video => {
+    console.log("onVideoSelect App", video);
+  };
 
   onTermSubmit = async term => {
     const response = await YouTube.get(`/search?q=${term}`);
     this.setState({ videos: response.data.items });
-    // console.log(this.state.videos);
   };
 
   countVideos() {
@@ -34,7 +38,10 @@ export default class App extends Component {
           onFormSubmit={this.onTermSubmit}
           Videos={this.state.videos.items}
         />
-        <VideoList videos={this.state.videos} />
+        <VideoList
+          videos={this.state.videos}
+          onVideoSelect={this.onVideoSelect}
+        />
       </div>
     );
   }
