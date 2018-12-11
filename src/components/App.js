@@ -21,6 +21,9 @@ export default class App extends Component {
   onTermSubmit = async term => {
     const response = await YouTube.get(`/search?q=${term}`);
     this.setState({ videos: response.data.items });
+    this.setState({ selectedVideo: this.state.videos[0] });
+
+    console.log(this.state.videos);
   };
 
   countVideos() {
