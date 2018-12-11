@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import YouTube from "../apis/youtube";
 import VideoList from "./VideoList";
+import VideoDetail from "./VideoDetail";
 
 export default class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class App extends Component {
   }
 
   onVideoSelect = video => {
-    console.log("onVideoSelect App", video);
+    this.setState({ selectedVideo: video });
   };
 
   onTermSubmit = async term => {
@@ -38,6 +39,7 @@ export default class App extends Component {
           onFormSubmit={this.onTermSubmit}
           Videos={this.state.videos.items}
         />
+        <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           videos={this.state.videos}
           onVideoSelect={this.onVideoSelect}
